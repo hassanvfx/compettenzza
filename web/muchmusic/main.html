@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+
+<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="stilo.css">
+
+<script languaje="javascript">
+
+//DETENER LOS MENSAJES DE ERROR EN LA VENTANA
+
+function stopErrors() {
+return true;
+}
+
+
+
+window.onerror = stopErrors;
+
+
+//MANTENER ASPECT RATIO EN CUALQUIER RESOLUCION
+//POR COMPETTENZZA DISEGNO 2002
+//MEXICO DF 02 08 02
+
+//DEFINIR EL MODO DEFAULT
+//MODO 0 = 640 X 480
+//MODO 1 = 800 X 600
+//MODO 2 = 1024 X 768 
+//MODO 3 = 1280 x 1024
+
+	var modo_def=2
+
+		if(modo_def==0){
+		modo_def=640}
+		if(modo_def==1){
+		modo_def=800}
+		if(modo_def==2){
+		modo_def=1024}
+	        if(modo_def==3){
+	 	modo_def=1280}
+
+
+//DEFINIR TAMAÑO DEL FLASH EN MODO DEFAULT
+//THE_MOVE= archivo.swf
+//FLASHX = width
+//FLASY =height
+
+	the_movie="main.swf"
+	flashx=700
+	flashy=500
+
+//DETECTAR EL MODO DE VIDEO ACTUAL
+
+	maxx=screen.availWidth
+	modo_user=maxx	
+		
+		//ENVIAR EL VALOR AL DEPURADOR MODO_USERD
+
+		if(maxx==640){
+			modo_userd=0}
+		if(maxx==800){
+			modo_userd=1}
+		if(maxx==1024){
+			modo_userd=2}		
+		
+		
+//ENCONTRAR PROPORCIÓN DE LA RESOLUCIÓN
+//PROPORCION = MODO DEF/ MODO USER
+
+	prop=modo_user/modo_def
+
+
+
+
+//REDEFINIR EL TAMAÑO DEL FLASH
+
+
+	tamx=Math.round(flashx*prop)
+	tamy=Math.round(flashy*prop)
+          
+    
+
+
+
+document.write("<BODY bgcolor='#FFCE00'>")
+
+
+
+document.write("<div id='mov'>")
+document.write("<center>")
+document.write(
+	"<OBJECT"
+	+ "CLASSID=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+	+ "WIDTH="+ tamx  
+	+ "HEIGHT="+ tamy 
+	+ "CODEBASE=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0'>"
+	+ "<PARAM NAME=MOVIE VALUE=" +the_movie   + ">"
+	+ "<PARAM NAME=QUALITY VALUE=high>"
+        + "<PARAM NAME=bgcolor VALUE=#000000>"
+	+ "<PARAM NAME=menu VALUE=false>"
+	+ "<EMBED"
+	+ " SRC=" + the_movie
+	+ " WIDTH=" +tamx
+	+ " HEIGHT=" +tamy
+	+ " QUALITY=high"
+	+ " MENU=false"
+  	+ " TYPE=application/x-shockwave-flash"
+	+ " PLUGINSPAGE=http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash>"
+	+ "</EMBED>"
+	+ "</OBJECT>"
+	);
+document.write("</center>")
+document.write("</div>")
+
+
+</script>
+
+</HEAD>
+
+</BODY>
+</HTML>
